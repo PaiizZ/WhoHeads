@@ -13,6 +13,8 @@
     "jsList" : [
         "src/resource.js",
         "src/GameLayer.js",
-        "src/Bg.js"
+        "src/Bg.js",
+        "src/whoGun.js",
+        "src/whoPeak.js"
     ]
 }
