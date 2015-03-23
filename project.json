@@ -15,6 +15,11 @@
         "src/GameLayer.js",
         "src/Bg.js",
         "src/whoGun.js",
-        "src/whoPeak.js"
+        "src/whoPeak.js",
+        "src/hummerBlue.js",
+         "src/hummerBlue2.js"
+        
+        
+
     ]
 }
