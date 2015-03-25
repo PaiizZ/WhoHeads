@@ -21,35 +21,35 @@ var GameLayer = cc.LayerColor.extend({
 
     this.addKeyboardHandlers();
     this.whoGun.scheduleUpdate();
-    
-     if(cc.sys.capabilities.hasOwnProperty('mouse') ) {
-      cc.eventManager.addListener({
-        event: cc.EventListener.MOUSE,
-        onMouseDown: function(event){
-          if(event.getButton() == cc.EventMouse.BUTTON_LEFT){
-            cc.log(event.getLocationX()+","+event.getLocationY());
-          }
-        }
-      },this);
-    }
       
-    return true;
-  },
-  onKeyDown: function( e ){
-   if ( e == 40 ) {
-    this.addChild( this.hammerBlue2 );
-    this.removeChild(this.hammerBlue);
-  }
+//     if(cc.sys.capabilities.hasOwnProperty('mouse') ) {
+//      cc.eventManager.addListener({
+//        event: cc.EventListener.MOUSE,
+//        onMouseDown: function(event){
+//          if(event.getButton() == cc.EventMouse.BUTTON_LEFT){
+//            cc.log(event.getLocationX()+","+event.getLocationY());
+//          }
+//        }
+//      },this);
+//    }
+
+return true;
+},
+onKeyDown: function( e ){
+ if ( e == 40 ) {
+  this.addChild( this.hammerBlue2 );
+  this.removeChild(this.hammerBlue);
+}
 },
 onKeyUp: function( e ) {
   if ( e == 40 ) {
-console.log(this.hammerBlue2.getPositionX()+","+this.hammerBlue2.getPositionY());
-    console.log(this.whoGun.getPositionX()+","+this.whoGun.getPositionY());  
-   if ( this.hammerBlue2.closeTo( this.whoGun ) ) {
-    this.whoGun.hitGun();
-  }
-  this.removeChild(this.hammerBlue2 );
-  this.addChild( this.hammerBlue );
+//console.log(this.hammerBlue2.getPositionX()+","+this.hammerBlue2.getPositionY());
+//    console.log(this.whoGun.getPositionX()+","+this.whoGun.getPositionY());  
+if ( this.hammerBlue2.closeTo( this.whoGun ) ) {
+  this.whoGun.hitGun();
+}
+this.removeChild(this.hammerBlue2 );
+this.addChild( this.hammerBlue );
 }
 if ( e == 32 ) {
   this.whoGun.hitGun();
@@ -66,7 +66,8 @@ addKeyboardHandlers: function() {
       self.onKeyUp( e );
     },
   }, this);
-}
+},
+
 
 });
 
