@@ -5,41 +5,68 @@ var GameLayer = cc.LayerColor.extend({
     this.bg.setPosition( new cc.Point( screenWidth/2 , screenHeight/2  ) );
     this.addChild( this.bg );
 
+
     this.whoGun = new whoGun();
     this.whoGun.setPosition( new cc.Point( screenWidth/2 , 0  ) );
     this.addChild( this.whoGun );
     
+    this.hammerBlue2 = new hammerBlue2();
+    this.hammerBlue2.setPosition( new cc.Point( screenWidth-250 , screenHeight/1.8  ) );
 
-    this.hummerBlue = new hummerBlue();
-    this.hummerBlue.setPosition( new cc.Point( screenWidth-150 , screenHeight/1.5  ) );
-    this.addChild( this.hummerBlue );
+    this.hammerBlue = new hammerBlue();
+    this.hammerBlue.setPosition( new cc.Point( screenWidth-150 , screenHeight/1.5  ) );
+    this.addChild( this.hammerBlue );
 
-    this.hummerBlue2 = new hummerBlue2();
-    this.hummerBlue2.setPosition( new cc.Point( screenWidth-250 , screenHeight/1.8  ) );
-    this.addChild( this.hummerBlue2 );
+    
 
     this.addKeyboardHandlers();
-this.whoGun.scheduleUpdate();
+    this.whoGun.scheduleUpdate();
+    
+     if(cc.sys.capabilities.hasOwnProperty('mouse') ) {
+      cc.eventManager.addListener({
+        event: cc.EventListener.MOUSE,
+        onMouseDown: function(event){
+          if(event.getButton() == cc.EventMouse.BUTTON_LEFT){
+            cc.log(event.getLocationX()+","+event.getLocationY());
+          }
+        }
+      },this);
+    }
+      
     return true;
   },
-  onKeyUp: function( e ) {
-    if ( e == 40 ) {
-      this.whoGun.hitGun();
-    }
-    if ( e == 32 ) {
-      this.whoGun.hitGun();
-    }
-  },
-
-  addKeyboardHandlers: function() {
-    var self = this;
-    cc.eventManager.addListener({
-      event: cc.EventListener.KEYBOARD,
-      onKeyPressed : function( e ) {
-        self.onKeyUp( e );
-      },
-    }, this);
+  onKeyDown: function( e ){
+   if ( e == 40 ) {
+    this.addChild( this.hammerBlue2 );
+    this.removeChild(this.hammerBlue);
   }
+},
+onKeyUp: function( e ) {
+  if ( e == 40 ) {
+console.log(this.hammerBlue2.getPositionX()+","+this.hammerBlue2.getPositionY());
+    console.log(this.whoGun.getPositionX()+","+this.whoGun.getPositionY());  
+   if ( this.hammerBlue2.closeTo( this.whoGun ) ) {
+    this.whoGun.hitGun();
+  }
+  this.removeChild(this.hammerBlue2 );
+  this.addChild( this.hammerBlue );
+}
+if ( e == 32 ) {
+  this.whoGun.hitGun();
+}
+},
+addKeyboardHandlers: function() {
+  var self = this;
+  cc.eventManager.addListener({
+    event: cc.EventListener.KEYBOARD,
+    onKeyPressed : function( e ) {
+      self.onKeyDown( e );
+    },
+    onKeyReleased: function( e ) {
+      self.onKeyUp( e );
+    },
+  }, this);
+}
 
 });
 
