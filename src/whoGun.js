@@ -19,9 +19,13 @@ var whoGun = cc.Sprite.extend({
 		this.direction = whoGun.DIR.Hit ;
 		
 	},
+	setDirection: function(dt) {
+		this.direction = whoGun.DIR.DontHit ;
+	}
 
 });
 
 whoGun.DIR = {
+	DontHit : 0 ,
 	Hit: 1
 };

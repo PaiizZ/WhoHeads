@@ -1,7 +1,7 @@
-var whoPeak = cc.Sprite.extend({
+var whoOat = cc.Sprite.extend({
 	ctor: function() {
 		this._super();
-		this.initWithFile( 'res/images/whoPeak.png' );
+		this.initWithFile( 'res/images/whoOat.png' );
 
 	},
 	update: function( dt ) {
