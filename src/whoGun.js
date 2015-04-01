@@ -15,7 +15,7 @@ var whoGun = cc.Sprite.extend({
 		else
 			this.setPositionY( this.getPositionY() - 2 );
 	},
-	hitGun: function() {
+	hit: function() {
 		this.direction = whoGun.DIR.Hit ;
 		
 	},

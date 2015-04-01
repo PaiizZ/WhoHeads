@@ -5,7 +5,7 @@ var whoPeak = cc.Sprite.extend({
 
 	},
 	update: function( dt ) {
-		if (this.direction != whoGun.DIR.Hit) {
+		if (this.direction != whoPeak.DIR.Hit) {
 			if(this.getPositionY() == 180) {
 				this.setPositionY( this.getPositionY()  );
 			}
@@ -15,12 +15,12 @@ var whoPeak = cc.Sprite.extend({
 		else
 			this.setPositionY( this.getPositionY() - 2 );
 	},
-	hitGun: function() {
-		this.direction = whoGun.DIR.Hit ;
+	hit: function() {
+		this.direction = whoPeak.DIR.Hit ;
 		
 	},
 	setDirection: function(dt) {
-		this.direction = whoGun.DIR.DontHit ;
+		this.direction = whoPeak.DIR.DontHit ;
 	}
 
 });

@@ -5,7 +5,7 @@ var whoOat = cc.Sprite.extend({
 
 	},
 	update: function( dt ) {
-		if (this.direction != whoGun.DIR.Hit) {
+		if (this.direction != whoOat.DIR.Hit) {
 			if(this.getPositionY() == 180) {
 				this.setPositionY( this.getPositionY()  );
 			}
@@ -15,17 +15,17 @@ var whoOat = cc.Sprite.extend({
 		else
 			this.setPositionY( this.getPositionY() - 2 );
 	},
-	hitGun: function() {
-		this.direction = whoGun.DIR.Hit ;
+	hit: function() {
+		this.direction = whoOat.DIR.Hit ;
 		
 	},
 	setDirection: function(dt) {
-		this.direction = whoGun.DIR.DontHit ;
+		this.direction = whoOat.DIR.DontHit ;
 	}
 
 });
 
-whoPeak.DIR = {
+whoOat.DIR = {
 	DontHit : 0 ,
 	Hit: 1
 };

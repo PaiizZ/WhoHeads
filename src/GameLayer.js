@@ -1,3 +1,4 @@
+
 var GameLayer = cc.LayerColor.extend({
   init: function() {
 
@@ -7,8 +8,13 @@ var GameLayer = cc.LayerColor.extend({
 
     this.whoGun = new whoGun();
     this.whoGun.setPosition( new cc.Point( screenWidth/2 , 0  ) );
-    this.addChild( this.whoGun );
-    
+    this.who = this.whoGun ;
+    this.addChild( this.who );
+    this.whoPeak = new whoPeak();
+    this.whoPeak.setPosition( new cc.Point( screenWidth/2 , 0  ) );
+    this.whoOat = new whoOat();
+    this.whoOat.setPosition( new cc.Point( screenWidth/2 , 0  ) );
+
     this.hammerBlue2 = new hammerBlue2();
     this.hammerBlue2.setPosition( new cc.Point( screenWidth-250 , screenHeight/1.8  ) );
 
@@ -16,9 +22,11 @@ var GameLayer = cc.LayerColor.extend({
     this.hammerBlue.setPosition( new cc.Point( screenWidth-150 , screenHeight/1.5  ) );
     this.addChild( this.hammerBlue );
 
+    this.state = GameLayer.STATES.NOT;
+
     this.addKeyboardHandlers();
 
-    this.whoGun.scheduleUpdate();
+    this.who.scheduleUpdate();
     this.scheduleUpdate();
 
 //     if(cc.sys.capabilities.hasOwnProperty('mouse') ) {
@@ -42,15 +50,15 @@ onKeyDown: function( e ){
 },
 onKeyUp: function( e ) {
   if ( e == 40 ) {
-    if ( this.hammerBlue2.closeTo( this.whoGun ) ) {
-      this.whoGun.hitGun();
-    }
-    this.removeChild(this.hammerBlue2 );
-    this.addChild( this.hammerBlue );
-  }
-  if ( e == 32 ) {
-    this.whoGun.hitGun();
-  }
+    if ( this.hammerBlue2.closeTo( this.who ) ) {
+     this.who.hit();
+   }
+   this.removeChild(this.hammerBlue2 );
+   this.addChild( this.hammerBlue );
+ }
+ if ( e == 32 ) {
+  this.who.hit();
+}
 },
 
 addKeyboardHandlers: function() {
@@ -66,17 +74,38 @@ addKeyboardHandlers: function() {
   }, this);
 },
 
+randomWho: function(){
+  var num = Math.floor( Math.random()*3 );
+  if(num == 1){
+    this.who = this.whoGun ;
+  }
+  if(num == 2){
+    this.who = this.whoPeak ;
+  }
+  if(num == 3){
+    this.who = this.whoOat ;
+  }
+},
 update: function( dt ) {
-  if (this.whoGun.getPositionY()<0) {
-    this.removeChild(this.whoGun);
-    this.whoGun.setDirection();
-    this.addChild(this.whoGun);
-    this.whoGun.scheduleUpdate();
+  if (this.state == GameLayer.STATES.NOT) {
+    this.state = GameLayer.STATES.HAVE ;
+    this.randomWho();
+    this.addChild(this.who);
+    who.scheduleUpdate();
+
+  }
+  if (this.who.getPositionY()<0) {
+    this.removeChild(this.who);
+    who.setDirection();
+    this.state = GameLayer.STATES.NOT ;
   }
 }
 
 });
-
+GameLayer.STATES = {
+ HAVE: 1,
+ NOT: 2
+};
 var StartScene = cc.Scene.extend({
   onEnter: function() {
     this._super();
