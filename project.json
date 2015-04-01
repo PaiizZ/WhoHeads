@@ -11,16 +11,14 @@
     "modules" : ["cocos2d"],
 
     "jsList" : [
-        "src/resource.js",
-        "src/GameLayer.js",
-        "src/Bg.js",
-        "src/whoGun.js",
-        "src/whoPeak.js",
-         "src/whoOat.js",
-        "src/hammerBlue.js",
-         "src/hammerBlue2.js"
-        
-        
+    "src/resource.js",
+    "src/GameLayer.js",
+    "src/Bg.js",
+    "src/Who.js",
+    "src/hammerBlue.js",
+    "src/hammerBlue2.js",
+    "src/hammerRed.js",
+    "src/hammerRed2.js"
 
     ]
 }
