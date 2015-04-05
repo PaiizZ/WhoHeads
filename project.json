@@ -14,11 +14,9 @@
     "src/resource.js",
     "src/GameLayer.js",
     "src/Bg.js",
-    "src/Who.js",
+    "src/Person.js",
     "src/hammerBlue.js",
-    "src/hammerBlue2.js",
-    "src/hammerRed.js",
-    "src/hammerRed2.js"
+    "src/hammerRed.js"
 
     ]
 }

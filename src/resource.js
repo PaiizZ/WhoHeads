@@ -4,9 +4,7 @@ var res = {
 	whoPeak_png : "res/images/whoPeak.png",
 	whoOat_png : "res/images/whoOat.png",
 	hummerBlue_png : "res/images/hammerBlue.png",
-	hummerBlue2_png : "res/images/hammerBlue2.png",
 	hummerRed_png : "res/images/hammerRed.png",
-	hummerRed2_png : "res/images/hammerRed2.png",
 };
 
 var g_resources = [];
