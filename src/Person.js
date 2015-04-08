@@ -35,15 +35,15 @@ var Person = cc.Sprite.extend({
         this.setPositionY( 0 );
 		var num = Math.floor( Math.random()*3 );
 		if(num == 0){
-			this.initWithFile( 'res/images/whoGun.png' );
+			this.initWithFile( res.whoGun_png );
 			score = 2 ;
 		}
 		else if(num == 1){
-			this.initWithFile( 'res/images/whoPeak.png' );
+			this.initWithFile( res.whoPeak_png );
 			score = 2 ;
 		}
 		else {
-			this.initWithFile( 'res/images/whoOat.png' );
+			this.initWithFile( res.whoOat_png );
 			score = 2 ;
 		}
 		this.sec = 0 ;

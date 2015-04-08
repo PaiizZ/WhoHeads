@@ -19,7 +19,6 @@ var hammerRed = cc.Sprite.extend({
       this.person.direction = Person.DIR.Hit ;
       scorePlayer2 += score ;
       score = 0 ;
-      console.log('Hit');
     }
     this.isHit =false;
   },
