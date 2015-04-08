@@ -36,7 +36,7 @@ var Person = cc.Sprite.extend({
 		var num = Math.floor( Math.random()*3 );
 		if(num == 0){
 			this.initWithFile( 'res/images/whoGun.png' );
-			score = 1 ;
+			score = 2 ;
 		}
 		else if(num == 1){
 			this.initWithFile( 'res/images/whoPeak.png' );
@@ -44,7 +44,7 @@ var Person = cc.Sprite.extend({
 		}
 		else {
 			this.initWithFile( 'res/images/whoOat.png' );
-			score = 3 ;
+			score = 2 ;
 		}
 		this.sec = 0 ;
 		this.schedule( this.movePersonUp );
