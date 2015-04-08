@@ -36,12 +36,15 @@ var Person = cc.Sprite.extend({
 		var num = Math.floor( Math.random()*3 );
 		if(num == 0){
 			this.initWithFile( 'res/images/whoGun.png' );
+			score = 1 ;
 		}
 		else if(num == 1){
 			this.initWithFile( 'res/images/whoPeak.png' );
+			score = 2 ;
 		}
 		else {
 			this.initWithFile( 'res/images/whoOat.png' );
+			score = 3 ;
 		}
 		this.sec = 0 ;
 		this.schedule( this.movePersonUp );

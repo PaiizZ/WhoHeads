@@ -6,6 +6,18 @@ var GameLayer = cc.LayerColor.extend({
       this.bg.setPosition( new cc.Point( screenWidth/2 , screenHeight/2  ) );
       this.addChild( this.bg );
 
+      this.scoreLabelOne = cc.LabelTTF.create( '0', 'Arial', 40 );
+      this.scoreLabelOne.setPosition( new cc.Point( 750 , 550 ) );
+      this.scoreLabelOne.setFontFillColor( new cc.Color( 0 , 0 , 255 , 255) );
+      this.addChild( this.scoreLabelOne );
+      this.scoreLabelOne.setString( score );
+
+      this.scoreLabelTwo = cc.LabelTTF.create( '0', 'Arial', 40 );
+      this.scoreLabelTwo.setPosition( new cc.Point( 50 , 550 ) );
+      this.scoreLabelTwo.setFontFillColor( new cc.Color( 255 , 0 , 0 , 255) );
+      this.addChild( this.scoreLabelTwo );
+      this.scoreLabelTwo.setString( score );
+
       this.person = new Person();
       this.person.setPosition( new cc.Point( screenWidth/2 , 0  ) );
       this.addChild( this.person );
@@ -81,6 +93,8 @@ return true;
     },
 
     update: function( dt ) {
+      this.scoreLabelOne.setString( score );
+      this.scoreLabelTwo.setString( score );
       if (this.person.getPositionY()<0){
         this.removeChild(this.person);
         this.person.direction = Person.DIR.DontHit ;
