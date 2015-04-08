@@ -8,20 +8,20 @@ var Person = cc.Sprite.extend({
 	update: function( dt ) {
 		
 		if (this.direction != Person.DIR.Hit) {
-			if ( this.sec == 2){
-				this.setPositionY( this.getPositionY() - 8 );
+			if ( this.sec == 1){
+				this.setPositionY( this.getPositionY() - 15 );
 			}
 			else if(this.getPositionY() >= 180) {
 				this.schedule( this.counter,1,2 );
 			}
 		}
 		else
-			this.setPositionY( this.getPositionY() - 8 );
+			this.setPositionY( this.getPositionY() - 15 );
 		
 	},
 
 	movePersonUp: function(dt) {
-		this.setPositionY( this.getPositionY() + 8 );
+		this.setPositionY( this.getPositionY() + 15 );
 		if( this.getPositionY() >= 180 ){
 			this.unschedule( this.movePersonUp );
 		}
