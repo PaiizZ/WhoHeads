@@ -12,7 +12,7 @@ var Person = cc.Sprite.extend({
 				this.setPositionY( this.getPositionY() - 15 );
 			}
 			else if(this.getPositionY() >= 180) {
-				this.schedule( this.counter,1,2 );
+				this.schedule( this.counter,0.5 );
 			}
 		}
 		else

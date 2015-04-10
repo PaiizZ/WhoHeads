@@ -20,12 +20,12 @@ var GameLayer = cc.LayerColor.extend({
 
     this.scoreLabelTime = cc.LabelTTF.create( '0', 'Arial', 70 );
     this.scoreLabelTime.setPosition( new cc.Point( 400 , 550 ) );
-    this.scoreLabelTime.setFontFillColor( new cc.Color( 0 , 255 , 0 , 255) );
+    this.scoreLabelTime.setFontFillColor( new cc.Color( 0 , 0 , 0 , 255) );
     this.addChild( this.scoreLabelTime );
     this.scoreLabelTime.setString( this.gameTime-this.sec );
 
     this.person = new Person();
-    this.person.setPosition( new cc.Point( screenWidth/2 , 0  ) );
+    this.person.setPosition( new cc.Point( screenWidth/2 , -100  ) );
     this.addChild( this.person );
 
     this.hammerBlue = new hammerBlue(this.person);
@@ -41,7 +41,7 @@ var GameLayer = cc.LayerColor.extend({
     this.person.scheduleUpdate();
     this.scheduleUpdate();
     this.sec = 0 ;
-    this.gameTime = 10 ;
+    this.gameTime = 120 ;
     this.hammerRedPress = false;
     this.hammerBluePress = false;
 //     if(cc.sys.capabilities.hasOwnProperty('mouse') ) {
