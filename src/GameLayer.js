@@ -2,41 +2,13 @@
 var GameLayer = cc.LayerColor.extend({
   init: function() {
 
-    this.bg = new Bg();
-    this.bg.setPosition( new cc.Point( screenWidth/2 , screenHeight/2  ) );
-    this.addChild( this.bg );
-
-    this.scoreLabelOne = cc.LabelTTF.create( '0', 'Arial', 50 );
-    this.scoreLabelOne.setPosition( new cc.Point( 725 , 550 ) );
-    this.scoreLabelOne.setFontFillColor( new cc.Color( 0 , 0 , 255 , 255) );
-    this.addChild( this.scoreLabelOne );
-    this.scoreLabelOne.setString( scorePlayer1 );
-
-    this.scoreLabelTwo = cc.LabelTTF.create( '0', 'Arial', 50 );
-    this.scoreLabelTwo.setPosition( new cc.Point( 75 , 550 ) );
-    this.scoreLabelTwo.setFontFillColor( new cc.Color( 255 , 0 , 0 , 255) );
-    this.addChild( this.scoreLabelTwo );
-    this.scoreLabelTwo.setString( scorePlayer2 );
-
-    this.scoreLabelTime = cc.LabelTTF.create( '0', 'Arial', 70 );
-    this.scoreLabelTime.setPosition( new cc.Point( 400 , 550 ) );
-    this.scoreLabelTime.setFontFillColor( new cc.Color( 0 , 0 , 0 , 255) );
-    this.addChild( this.scoreLabelTime );
-    this.scoreLabelTime.setString( this.gameTime-this.sec );
-
-    this.person = new Person();
-    this.person.setPosition( new cc.Point( screenWidth/2 , -100  ) );
-    this.addChild( this.person );
-
-    this.hammerBlue = new hammerBlue(this.person);
-    this.hammerBlue.setPosition( new cc.Point( screenWidth-150 , screenHeight-400 ) );
-
-    this.hammerRed = new hammerRed(this.person);
-    this.hammerRed.setPosition( new cc.Point( screenWidth-650 , screenHeight-400  ) );
-
-    this.addChild( this.hammerBlue,3 );
-    this.addChild( this.hammerRed ,3);
-
+    this.createBackground();
+    this.createScoreLabelOne();
+    this.createScoreLabelTwo();
+    this.createScoreLabelTime();
+    this.createPerson();
+    this.createHammerBlue();
+    this.createHammerRed();
     this.addKeyboardHandlers();
     this.person.scheduleUpdate();
     this.scheduleUpdate();
@@ -57,6 +29,52 @@ var GameLayer = cc.LayerColor.extend({
 
   return true;
 },
+  createBackground : function( e ) {
+    this.bg = new Bg();
+    this.bg.setPosition( new cc.Point( screenWidth/2 , screenHeight/2  ) );
+    this.addChild( this.bg );
+  },
+
+  createScoreLabelOne : function( e ) {
+    this.scoreLabelOne = cc.LabelTTF.create( '0', 'Arial', 50 );
+    this.scoreLabelOne.setPosition( new cc.Point( 725 , 550 ) );
+    this.scoreLabelOne.setFontFillColor( new cc.Color( 0 , 0 , 255 , 255) );
+    this.addChild( this.scoreLabelOne );
+    this.scoreLabelOne.setString( scorePlayer1 );
+  },
+
+  createScoreLabelTwo : function( e ) {
+    this.scoreLabelTwo = cc.LabelTTF.create( '0', 'Arial', 50 );
+    this.scoreLabelTwo.setPosition( new cc.Point( 75 , 550 ) );
+    this.scoreLabelTwo.setFontFillColor( new cc.Color( 255 , 0 , 0 , 255) );
+    this.addChild( this.scoreLabelTwo );
+    this.scoreLabelTwo.setString( scorePlayer2 );
+  },
+
+  createScoreLabelTime : function( e ) {
+    this.scoreLabelTime = cc.LabelTTF.create( '0', 'Arial', 70 );
+    this.scoreLabelTime.setPosition( new cc.Point( 400 , 550 ) );
+    this.scoreLabelTime.setFontFillColor( new cc.Color( 0 , 0 , 0 , 255) );
+    this.addChild( this.scoreLabelTime );
+    this.scoreLabelTime.setString( this.gameTime-this.sec );
+  },
+  createPerson : function( e ){
+    this.person = new Person();
+    this.person.setPosition( new cc.Point( screenWidth/2 , -100  ) );
+    this.addChild( this.person );
+  },
+
+  createHammerBlue : function( e ){
+    this.hammerBlue = new hammerBlue(this.person);
+    this.hammerBlue.setPosition( new cc.Point( screenWidth-150 , screenHeight-400 ) );
+    this.addChild( this.hammerBlue,3 );
+  },
+
+  createHammerRed : function( e ){
+    this.hammerRed = new hammerRed(this.person);
+    this.hammerRed.setPosition( new cc.Point( screenWidth-650 , screenHeight-400  ) );
+    this.addChild( this.hammerRed ,3);
+  },
 
   onKeyDown: function( e ){
     if ( e == 40 && !this.hammerBluePress) {
