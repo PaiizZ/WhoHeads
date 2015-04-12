@@ -8,21 +8,23 @@ var hammerBlue = cc.Sprite.extend({
         this.isHit = false;
         this.person = Preson;
     },
+
     update:function(){
     	this.checkHit();
     },
-   checkHit:function(){
-   	if(this.isHit&&this.collsion()){
+
+    checkHit:function(){
+   	if( this.isHit && this.collsion() ){
    		this.isHit = false;
    		this.person.direction = Person.DIR.Hit ;
       scorePlayer1 += score ;
       score = 0 ;
    	}
-   	this.isHit =false;
+   	this.isHit = false;
    },
 
    collsion:function(){
-   		return this.person.y>=180;
+   		return this.person.y >= 180;
    }
 
 });
