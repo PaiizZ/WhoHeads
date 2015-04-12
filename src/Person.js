@@ -33,6 +33,7 @@ var Person = cc.Sprite.extend({
 
 	randomPerson: function(){
         this.setPositionY( 0 );
+        //var num = 19 ;
 		var num = Math.floor( Math.random()*20 );
 		if(num == 0){
 			this.initWithFile( res.whoGun_png );
@@ -109,6 +110,10 @@ var Person = cc.Sprite.extend({
 		else if(num == 18){
 			this.initWithFile( res.whoPlammy_png );
 			score = -2 ;
+		}
+		else if(num == 19){
+			this.initWithFile( "res/images/haloo.png" );
+			score = +2 ;
 		}
 		else {
 			this.initWithFile( res.whoPrang_png );

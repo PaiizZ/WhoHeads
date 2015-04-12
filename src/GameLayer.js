@@ -3,6 +3,7 @@ var GameLayer = cc.LayerColor.extend({
   init: function() {
 
     this.createBackground();
+    this.createHit();
     this.createScoreLabelOne();
     this.createScoreLabelTwo();
     this.createScoreLabelTime();
@@ -14,8 +15,10 @@ var GameLayer = cc.LayerColor.extend({
     this.scheduleUpdate();
     this.sec = 0 ;
     this.gameTime = 120 ;
+    this.showEffect = false ;
     this.hammerRedPress = false;
     this.hammerBluePress = false;
+
 //     if(cc.sys.capabilities.hasOwnProperty('mouse') ) {
 //      cc.eventManager.addListener({
 //        event: cc.EventListener.MOUSE,
@@ -29,10 +32,26 @@ var GameLayer = cc.LayerColor.extend({
 
   return true;
 },
+  
+  checkEffectHit : function( e ){
+
+    // if ( this.hammerBlue.isHit == true || this.hammerRed.isHit == true ) {
+    //   this.addChild(this.hit , 2);
+    //   this.showEffect = true ;
+    // }
+
+  },
+
   createBackground : function( e ) {
     this.bg = new Bg();
     this.bg.setPosition( new cc.Point( screenWidth/2 , screenHeight/2  ) );
     this.addChild( this.bg );
+  },
+
+  createHit : function( e ) {
+    this.hit = new Hit();
+    this.hit.setPosition( new cc.Point( screenWidth/2 , 280 ) );
+    //this.addChild( this.hit , 1 );
   },
 
   createScoreLabelOne : function( e ) {
@@ -94,11 +113,13 @@ var GameLayer = cc.LayerColor.extend({
     if ( e == 40 && this.hammerBluePress) {
       this.hammerBlue.setRotation(0);
       this.hammerBluePress = false;
+       this.hammerBlue.isHit = false;
     }
 
     if ( e == 32 && this.hammerRedPress) {
       this.hammerRed.setRotation(0);
       this.hammerRedPress = false;
+      this.hammerRed.isHit = false;
     }
   },
 
@@ -121,6 +142,7 @@ var GameLayer = cc.LayerColor.extend({
     this.scoreLabelTwo.setString( scorePlayer2 );
     this.scoreLabelTime.setString( this.gameTime-this.sec );
     this.schedule( this.counterTime,1 );
+    this.checkEffectHit();
     if (this.person.getPositionY()<-200){
       this.removeChild(this.person);
       this.person.direction = Person.DIR.DontHit ;

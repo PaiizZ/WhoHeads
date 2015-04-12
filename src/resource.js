@@ -20,8 +20,10 @@ var res = {
 	whoNumtan_png : "res/images/whoNumtan.png",
 	whoPlammy_png : "res/images/whoPlammy.png",
 	whoPrang_png : "res/images/whoPrang.png",
+	hit_png : "res/images/hit.png",
 	hummerBlue_png : "res/images/hammerBlue.png",
 	hummerRed_png : "res/images/hammerRed.png",
+
 };
 
 var g_resources = [];

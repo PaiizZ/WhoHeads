@@ -20,7 +20,6 @@ var hammerBlue = cc.Sprite.extend({
       scorePlayer1 += score ;
       score = 0 ;
    	}
-   	this.isHit = false;
    },
 
    collsion:function(){
