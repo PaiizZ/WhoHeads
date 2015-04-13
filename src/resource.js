@@ -23,6 +23,7 @@ var res = {
 	hit_png : "res/images/hit.png",
 	hummerBlue_png : "res/images/hammerBlue.png",
 	hummerRed_png : "res/images/hammerRed.png",
+	ThemeSong_mp3 : "res/musics/ThemeSong.mp3",
 
 };
 

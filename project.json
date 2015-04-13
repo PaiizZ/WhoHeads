@@ -15,7 +15,7 @@
     "src/GameLayer.js",
     "src/Bg.js",
     "src/Person.js",
-    "src/Hit.js",
+    "src/Effect.js",
     "src/hammerBlue.js",
     "src/hammerRed.js"
 

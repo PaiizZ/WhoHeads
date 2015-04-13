@@ -15,10 +15,9 @@ var GameLayer = cc.LayerColor.extend({
     this.scheduleUpdate();
     this.sec = 0 ;
     this.gameTime = 120 ;
-    this.showEffect = false ;
     this.hammerRedPress = false;
     this.hammerBluePress = false;
-
+    cc.audioEngine.playMusic( res.ThemeSong_mp3 ) ;
 //     if(cc.sys.capabilities.hasOwnProperty('mouse') ) {
 //      cc.eventManager.addListener({
 //        event: cc.EventListener.MOUSE,
@@ -35,10 +34,10 @@ var GameLayer = cc.LayerColor.extend({
   
   checkEffectHit : function( e ){
 
-    // if ( this.hammerBlue.isHit == true || this.hammerRed.isHit == true ) {
-    //   this.addChild(this.hit , 2);
-    //   this.showEffect = true ;
-    // }
+    if ( this.hammerRed.ishit == true) {
+      console.log("111");
+      this.addChild(this.effect , 1);
+     }
 
   },
 
@@ -49,9 +48,9 @@ var GameLayer = cc.LayerColor.extend({
   },
 
   createHit : function( e ) {
-    this.hit = new Hit();
-    this.hit.setPosition( new cc.Point( screenWidth/2 , 280 ) );
-    //this.addChild( this.hit , 1 );
+    this.effect = new Effect();
+    this.effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
+    //this.addChild( this.effect , 1 );
   },
 
   createScoreLabelOne : function( e ) {
@@ -166,11 +165,11 @@ var GameLayer = cc.LayerColor.extend({
       // }
     });
 
-  var StartScene = cc.Scene.extend({
-    onEnter: function() {
-      this._super();
-      var layer = new GameLayer();
-      layer.init();
-      this.addChild( layer );
-    }
-  });
+var StartScene = cc.Scene.extend({
+  onEnter: function() {
+    this._super();
+    var layer = new GameLayer();
+    layer.init();
+    this.addChild( layer );
+  }
+});

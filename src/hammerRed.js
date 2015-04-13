@@ -14,16 +14,17 @@ var hammerRed = cc.Sprite.extend({
   },
 
   checkHit:function(){
-    if(this.isHit&&this.collsion()){
+    if( this.isHit && this.collsion() ){
       this.isHit = false;
       this.person.direction = Person.DIR.Hit ;
       scorePlayer2 += score ;
       score = 0 ;
     }
+    this.isHit = false;
   },
 
   collsion:function(){
-    return this.person.y>=180;
+    return this.person.y >= 180;
   }
 
 });
