@@ -20,10 +20,11 @@ var res = {
 	whoNumtan_png : "res/images/whoNumtan.png",
 	whoPlammy_png : "res/images/whoPlammy.png",
 	whoPrang_png : "res/images/whoPrang.png",
-	hit_png : "res/images/hit.png",
+	effect_png : "res/images/hit.png",
 	hummerBlue_png : "res/images/hammerBlue.png",
 	hummerRed_png : "res/images/hammerRed.png",
 	ThemeSong_mp3 : "res/musics/ThemeSong.mp3",
+	yell_wav : "res/musics/yell.wav",
 
 };
 
