@@ -7,6 +7,7 @@ var hammerRed = cc.Sprite.extend({
     this.setPosition(this.x,300);
     this.isHit = false;
     this.person = Preson;
+    this.showEffect = false;
   },
 
   update:function(){
@@ -15,11 +16,12 @@ var hammerRed = cc.Sprite.extend({
 
   checkHit:function(){
     if( this.isHit && this.collsion() ){
-      cc.audioEngine.playEffect( res.yell_wav ) ;
+      //cc.audioEngine.playEffect( res.yell_wav ) ;
       this.isHit = false;
       this.person.direction = Person.DIR.Hit ;
       scorePlayer2 += score ;
       score = 0 ;
+      this.showEffect = true;
     }
     this.isHit = false;
   },

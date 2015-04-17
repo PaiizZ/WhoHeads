@@ -3,7 +3,6 @@ var GameLayer = cc.LayerColor.extend({
   init: function() {
 
     this.createBackground();
-    this.createHit();
     this.createScoreLabelOne();
     this.createScoreLabelTwo();
     this.createScoreLabelTime();
@@ -36,7 +35,10 @@ var GameLayer = cc.LayerColor.extend({
 
     if ( this.hammerRed.ishit == true) {
       console.log("111");
-      this.addChild(this.effect , 1);
+      // var effect = new Effect();
+      //  effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
+      //  effect.scheduleUpdate();
+      //  this.addChild(effect , 1);
      }
 
   },
@@ -47,11 +49,11 @@ var GameLayer = cc.LayerColor.extend({
     this.addChild( this.bg );
   },
 
-  createHit : function( e ) {
-    this.effect = new Effect();
-    this.effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
-    //this.addChild( this.effect , 1 );
-  },
+  // createHit : function( e ) {
+  //   this.effect = new Effect();
+  //   this.effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
+  //   //this.addChild( this.effect , 1 );
+  // },
 
   createScoreLabelOne : function( e ) {
     this.scoreLabelOne = cc.LabelTTF.create( '0', 'Arial', 50 );
@@ -89,7 +91,7 @@ var GameLayer = cc.LayerColor.extend({
   },
 
   createHammerRed : function( e ){
-    this.hammerRed = new hammerRed(this.person);
+    this.hammerRed = new hammerRed(this.person,this);
     this.hammerRed.setPosition( new cc.Point( screenWidth-650 , screenHeight-400  ) );
     this.addChild( this.hammerRed ,3);
   },
@@ -148,6 +150,20 @@ var GameLayer = cc.LayerColor.extend({
       this.person.randomPerson();
       this.addChild(this.person);
       this.person.scheduleUpdate();
+    }
+    if(this.hammerRed.showEffect){
+       var effect = new Effect();
+       effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
+       effect.scheduleUpdate();
+       this.addChild(effect , 1);
+       this.hammerRed.showEffect = false;
+    }
+        if(this.hammerBlue.showEffect){
+       var effect = new Effect();
+       effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
+       effect.scheduleUpdate();
+       this.addChild(effect , 1);
+       this.hammerBlue.showEffect = false;
     }
 
   },
