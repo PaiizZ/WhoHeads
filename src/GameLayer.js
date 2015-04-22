@@ -12,10 +12,11 @@ var GameLayer = cc.LayerColor.extend({
     this.person.scheduleUpdate();
     this.scheduleUpdate();
     this.sec = 0 ;
-    this.secBorn = 1 ;
+    this.secBorn = 0 ;
     this.gameTime = 120 ;
     this.hammerRedPress = false;
     this.hammerBluePress = false;
+    this.numRandom = Math.floor( Math.random()*3 ) + 1;
     cc.audioEngine.playMusic( res.ThemeSong_mp3 ) ;
 //     if(cc.sys.capabilities.hasOwnProperty('mouse') ) {
 //      cc.eventManager.addListener({
@@ -134,16 +135,18 @@ var GameLayer = cc.LayerColor.extend({
     this.scoreLabelTwo.setString( scorePlayer2 );
     this.scoreLabelTime.setString( this.gameTime-this.sec );
     this.schedule( this.counterTime,1 );
-    if (this.person.getPositionY()<=-200){   
-      var numRandom = Math.floor( Math.random()*4 );
-      this.schedule( this.counterBorn,1  );
-      console.log(""+numRandom);
-       if ( numRandom == this.secBorn ) {
-      this.removeChild(this.person);
-      console.log("111");
-      this.createNewPerson();
-      this.secBorn = 1 ;
-    }
+    if (this.person.getPositionY()<=-200){ 
+       this.schedule( this.counterBorn, 1  );
+       this.person.unscheduleUpdate();
+       console.log(""+this.numRandom);
+       console.log(""+this.secBorn);
+       if ( this.numRandom == this.secBorn ) {
+        this.removeChild(this.person);
+        console.log("111");
+        this.createNewPerson();
+        this.secBorn = 0 ;
+        this.numRandom = Math.floor( Math.random()*3 + 1);
+      }
     }
     if(this.hammerRed.showEffect){
        var effect = new Effect();
@@ -170,15 +173,9 @@ var GameLayer = cc.LayerColor.extend({
 
   counterBorn:function(dt){
     this.secBorn++;
-  },
-      // counter:function(dt){
-      //   this.countMiliSec+=dt;
-      //   HamerRedTimeLimit-=dt;
-      //   if(this.countMiliSec>1){
-      //     this.countMiliSec=0;
-      //   }
-      // }
-    });
+  }
+
+});
 
 var StartScene = cc.Scene.extend({
   onEnter: function() {

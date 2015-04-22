@@ -11,7 +11,7 @@ var hammerBlue = cc.Sprite.extend({
   },
 
   update:function(){
-   this.checkHit();
+    this.checkHit();
   },
 
   checkHit:function(){
