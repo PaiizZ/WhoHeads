@@ -16,7 +16,12 @@ var hammerRed = cc.Sprite.extend({
 
   checkHit:function(){
     if( this.isHit && this.collsion() ){
-      cc.audioEngine.playEffect( res.yell_wav ) ;
+      if(this.person.numPicture<=12){
+        cc.audioEngine.playEffect( res.yellBoy_wav ) ;
+      }
+      else{
+        cc.audioEngine.playEffect( res.yellGirl_wav ) ;
+      }
       this.isHit = false;
       this.person.direction = Person.DIR.Hit ;
       scorePlayer2 += score ;

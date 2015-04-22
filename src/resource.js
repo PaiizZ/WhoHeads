@@ -24,7 +24,8 @@ var res = {
 	hummerBlue_png : "res/images/hammerBlue.png",
 	hummerRed_png : "res/images/hammerRed.png",
 	ThemeSong_mp3 : "res/musics/ThemeSong.mp3",
-	yell_wav : "res/musics/yell.wav",
+	yellBoy_wav : "res/musics/yellBoy.wav",
+	yellGirl_wav : "res/musics/yellGirl.wav",
 
 };
 
