@@ -16,7 +16,7 @@ var hammerRed = cc.Sprite.extend({
 
   checkHit:function(){
     if( this.isHit && this.collsion() ){
-      //cc.audioEngine.playEffect( res.yell_wav ) ;
+      cc.audioEngine.playEffect( res.yell_wav ) ;
       this.isHit = false;
       this.person.direction = Person.DIR.Hit ;
       scorePlayer2 += score ;

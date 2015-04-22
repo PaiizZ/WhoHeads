@@ -1,4 +1,3 @@
-
 var GameLayer = cc.LayerColor.extend({
   init: function() {
 
@@ -13,6 +12,7 @@ var GameLayer = cc.LayerColor.extend({
     this.person.scheduleUpdate();
     this.scheduleUpdate();
     this.sec = 0 ;
+    this.secBorn = 1 ;
     this.gameTime = 120 ;
     this.hammerRedPress = false;
     this.hammerBluePress = false;
@@ -30,30 +30,12 @@ var GameLayer = cc.LayerColor.extend({
 
   return true;
 },
-  
-  checkEffectHit : function( e ){
-
-    if ( this.hammerRed.ishit == true) {
-      console.log("111");
-      // var effect = new Effect();
-      //  effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
-      //  effect.scheduleUpdate();
-      //  this.addChild(effect , 1);
-     }
-
-  },
 
   createBackground : function( e ) {
     this.bg = new Bg();
     this.bg.setPosition( new cc.Point( screenWidth/2 , screenHeight/2  ) );
     this.addChild( this.bg );
   },
-
-  // createHit : function( e ) {
-  //   this.effect = new Effect();
-  //   this.effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
-  //   //this.addChild( this.effect , 1 );
-  // },
 
   createScoreLabelOne : function( e ) {
     this.scoreLabelOne = cc.LabelTTF.create( '0', 'Arial', 50 );
@@ -78,6 +60,7 @@ var GameLayer = cc.LayerColor.extend({
     this.addChild( this.scoreLabelTime );
     this.scoreLabelTime.setString( this.gameTime-this.sec );
   },
+  
   createPerson : function( e ){
     this.person = new Person();
     this.person.setPosition( new cc.Point( screenWidth/2 , -100  ) );
@@ -114,7 +97,7 @@ var GameLayer = cc.LayerColor.extend({
     if ( e == 40 && this.hammerBluePress) {
       this.hammerBlue.setRotation(0);
       this.hammerBluePress = false;
-       this.hammerBlue.isHit = false;
+      this.hammerBlue.isHit = false;
     }
 
     if ( e == 32 && this.hammerRedPress) {
@@ -138,18 +121,29 @@ var GameLayer = cc.LayerColor.extend({
     }, this);
   },
 
+  createNewPerson : function(){
+      this.person.direction = Person.DIR.DontHit ;
+      this.person.randomPerson();
+      this.addChild(this.person);
+      this.person.scheduleUpdate();
+  },
+  
+  
   update: function( dt ) {
     this.scoreLabelOne.setString( scorePlayer1 );
     this.scoreLabelTwo.setString( scorePlayer2 );
     this.scoreLabelTime.setString( this.gameTime-this.sec );
     this.schedule( this.counterTime,1 );
-    this.checkEffectHit();
-    if (this.person.getPositionY()<-200){
+    if (this.person.getPositionY()<=-200){   
+      var numRandom = Math.floor( Math.random()*4 );
+      this.schedule( this.counterBorn,1  );
+      console.log(""+numRandom);
+       if ( numRandom == this.secBorn ) {
       this.removeChild(this.person);
-      this.person.direction = Person.DIR.DontHit ;
-      this.person.randomPerson();
-      this.addChild(this.person);
-      this.person.scheduleUpdate();
+      console.log("111");
+      this.createNewPerson();
+      this.secBorn = 1 ;
+    }
     }
     if(this.hammerRed.showEffect){
        var effect = new Effect();
@@ -158,7 +152,7 @@ var GameLayer = cc.LayerColor.extend({
        this.addChild(effect , 1);
        this.hammerRed.showEffect = false;
     }
-        if(this.hammerBlue.showEffect){
+    if(this.hammerBlue.showEffect){
        var effect = new Effect();
        effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
        effect.scheduleUpdate();
@@ -167,10 +161,15 @@ var GameLayer = cc.LayerColor.extend({
     }
 
   },
+
   counterTime:function(dt){
     if (this.sec!=this.gameTime) {
       this.sec++;
     }
+  },
+
+  counterBorn:function(dt){
+    this.secBorn++;
   },
       // counter:function(dt){
       //   this.countMiliSec+=dt;
