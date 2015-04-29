@@ -8,12 +8,15 @@ var GameLayer = cc.LayerColor.extend({
     this.createPerson();
     this.createHammerBlue();
     this.createHammerRed();
+    this.hammerBlue.setHammer(this.hammerRed);
+    this.hammerRed.setHammer(this.hammerBlue);
+
     this.addKeyboardHandlers();
     this.person.scheduleUpdate();
     this.scheduleUpdate();
     this.sec = 0 ;
     this.secBorn = 0 ;
-    this.gameTime = 120 ;
+    this.gameTime = 20 ;
     this.hammerRedPress = false;
     this.hammerBluePress = false;
     this.numRandom = Math.floor( Math.random()*3 ) + 1;
@@ -70,13 +73,13 @@ var GameLayer = cc.LayerColor.extend({
 
   createHammerBlue : function( e ){
     this.hammerBlue = new hammerBlue(this.person);
-    this.hammerBlue.setPosition( new cc.Point( screenWidth-150 , screenHeight-400 ) );
+    this.hammerBlue.setPosition( new cc.Point( screenWidth-150 , screenHeight ) );
     this.addChild( this.hammerBlue,3 );
   },
 
   createHammerRed : function( e ){
-    this.hammerRed = new hammerRed(this.person,this);
-    this.hammerRed.setPosition( new cc.Point( screenWidth-650 , screenHeight-400  ) );
+    this.hammerRed = new hammerRed(this.person);
+    this.hammerRed.setPosition( new cc.Point( screenWidth-650 , screenHeight ) );
     this.addChild( this.hammerRed ,3);
   },
 
@@ -91,6 +94,13 @@ var GameLayer = cc.LayerColor.extend({
       this.hammerRed.setRotation(60);
       this.hammerRedPress = true;
       this.hammerRed.isHit = true;
+    }
+
+    if ( e == 82 ) {
+       cc.audioEngine.stopMusic( res.ThemeSong_mp3 ) ;
+       cc.director.runScene(new StartScene());
+       scorePlayer1 = 0 ;
+       scorePlayer2 = 0 ;
     }
   },
 
@@ -123,13 +133,28 @@ var GameLayer = cc.LayerColor.extend({
   },
 
   createNewPerson : function(){
-      this.person.direction = Person.DIR.DontHit ;
-      this.person.randomPerson();
-      this.addChild(this.person);
-      this.person.scheduleUpdate();
+    this.person.direction = Person.DIR.DontHit ;
+    this.person.randomPerson();
+    this.addChild(this.person);
+    this.person.scheduleUpdate();
   },
-  
-  
+   
+  createEffectRed : function(){
+    var effect = new Effect();
+    effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
+    effect.scheduleUpdate();
+    this.addChild(effect , 1);
+    this.hammerRed.showEffect = false;
+  },
+
+  createEffectBlue : function(){
+    var effect = new Effect();
+    effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
+    effect.scheduleUpdate();
+    this.addChild(effect , 1);
+    this.hammerBlue.showEffect = false;
+  },
+
   update: function( dt ) {
     this.scoreLabelOne.setString( scorePlayer1 );
     this.scoreLabelTwo.setString( scorePlayer2 );
@@ -137,32 +162,23 @@ var GameLayer = cc.LayerColor.extend({
     this.schedule( this.counterTime,1 );
     if (this.person.getPositionY()<=-200){ 
        this.schedule( this.counterBorn, 1  );
-       this.person.unscheduleUpdate();
-       console.log(""+this.numRandom);
-       console.log(""+this.secBorn);
        if ( this.numRandom == this.secBorn ) {
         this.removeChild(this.person);
-        console.log("111");
         this.createNewPerson();
         this.secBorn = 0 ;
         this.numRandom = Math.floor( Math.random()*3 + 1);
       }
     }
     if(this.hammerRed.showEffect){
-       var effect = new Effect();
-       effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
-       effect.scheduleUpdate();
-       this.addChild(effect , 1);
-       this.hammerRed.showEffect = false;
+       this.createEffectRed();
     }
     if(this.hammerBlue.showEffect){
-       var effect = new Effect();
-       effect.setPosition( new cc.Point( screenWidth/2 , 280 ) );
-       effect.scheduleUpdate();
-       this.addChild(effect , 1);
-       this.hammerBlue.showEffect = false;
+       this.createEffectBlue();
     }
-
+    if ( (this.gameTime-this.sec) <= 0) {
+      this.endGame();
+    }
+   
   },
 
   counterTime:function(dt){
@@ -173,6 +189,11 @@ var GameLayer = cc.LayerColor.extend({
 
   counterBorn:function(dt){
     this.secBorn++;
+  },
+
+  endGame: function() {
+    this.person.unscheduleUpdate();
+    this.unscheduleUpdate();
   }
 
 });
