@@ -19,6 +19,9 @@ var res = {
 	playButton_png : "res/images/playButton.png",
 	playButtonAnimation_png : "res/images/playButtonAnimation.png",
 	backButton_png : "res/images/backButton.png",
+	backButtonAnimation_png : "res/images/backButtonAnimation.png",
+	retryButton_png : "res/images/retryButton.png",
+	retryButtonAnimation_png : "res/images/retryButtonAnimation.png",
 
 	//who picture
 	whoGun_png : "res/images/whoGun.png",
@@ -43,12 +46,17 @@ var res = {
 	whoPrang_png : "res/images/whoPrang.png",
 	//hammer
 	effect_png : "res/images/hit.png",
-	hummerBlue_png : "res/images/hammerBlue.png",
-	hummerBlueCombo1_png : "res/images/hammerBlueCombo1.png",
-	hummerBlueCombo2_png : "res/images/hammerBlueCombo2.png",
-	hummerRed_png : "res/images/hammerRed.png",
-	hummerRedCombo1_png : "res/images/hammerRedCombo1.png",
-	hummerRedCombo2_png : "res/images/hammerRedCombo2.png",
+	hammerBlue_png : "res/images/hammerBlue.png",
+	hammerBlueCombo1_png : "res/images/hammerBlueCombo1.png",
+	hammerBlueCombo2_png : "res/images/hammerBlueCombo2.png",
+	hammerRed_png : "res/images/hammerRed.png",
+	hammerRedCombo1_png : "res/images/hammerRedCombo1.png",
+	hammerRedCombo2_png : "res/images/hammerRedCombo2.png",
+	hamRed_png : "res/images/hamRed.png",
+	hamRedAnimation_png : "res/images/hamRedAnimation.png",
+	hamBlue_png : "res/images/hamBlue.png",
+	hamBlueAnimation_png : "res/images/hamBlueAnimation.png",
+
 	//sounds
 	ThemeSong_mp3 : "res/musics/ThemeSong.mp3",
 	ThemeSongMenu_mp3 : "res/musics/ThemeSongMenu.mp3",

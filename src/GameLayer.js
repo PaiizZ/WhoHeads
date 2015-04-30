@@ -16,11 +16,11 @@ var GameLayer = cc.LayerColor.extend({
     this.scheduleUpdate();
     this.sec = 0 ;
     this.secBorn = 0 ;
-    this.gameTime = 120 ;
+    this.gameTime = 10 ;
     this.hammerRedPress = false;
     this.hammerBluePress = false;
     this.numRandom = Math.floor( Math.random()*3 ) + 1;
-    cc.audioEngine.playMusic( res.ThemeSong_mp3 ) ;
+    cc.audioEngine.playMusic( res.ThemeSong_mp3 , true ) ;
 //     if(cc.sys.capabilities.hasOwnProperty('mouse') ) {
 //      cc.eventManager.addListener({
 //        event: cc.EventListener.MOUSE,
@@ -155,6 +155,31 @@ var GameLayer = cc.LayerColor.extend({
     this.hammerBlue.showEffect = false;
   },
 
+   createBackButton:function(){
+      this.backButtonItem = new cc.MenuItemImage(
+        res.backButton_png,
+        res.backButtonAnimation_png,
+        function () {
+                cc.audioEngine.playEffect( res.click_mp3 );
+                cc.director.runScene(new StartSceneMenu() );
+            }, this);
+      this.backButton = new cc.Menu(this.backButtonItem);
+        this.backButton.setPosition(screenWidth-80,screenHeight-550);
+      this.addChild(this.backButton);
+    },
+    createRetryButton:function(){
+      this.retryButtonItem = new cc.MenuItemImage(
+        res.retryButton_png,
+        res.retryButtonAnimation_png,
+        function () {
+                cc.audioEngine.playEffect( res.click_mp3 );
+                cc.director.runScene(new StartScene() );
+            }, this);
+      this.retryButton = new cc.Menu(this.retryButtonItem);
+        this.retryButton.setPosition(screenWidth-180,screenHeight-550);
+      this.addChild(this.retryButton);
+    },
+
   update: function( dt ) {
     this.scoreLabelOne.setString( scorePlayer1 );
     this.scoreLabelTwo.setString( scorePlayer2 );
@@ -194,6 +219,11 @@ var GameLayer = cc.LayerColor.extend({
   endGame: function() {
     this.person.unscheduleUpdate();
     this.unscheduleUpdate();
+    this.bg.setOpacity(150);
+    this.hammerBlue.setOpacity(1000);
+    this.person.setOpacity(150);
+    this.createBackButton();
+    this.createRetryButton();
   }
 
 });

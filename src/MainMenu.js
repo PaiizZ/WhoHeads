@@ -1,14 +1,24 @@
+var MenuBg = cc.Sprite.extend({
+    ctor: function() {
+        this._super();
+        this.initWithFile( res.MenuBg_png );
+
+    },
+
+});
+
 var MainMenu = cc.LayerColor.extend({
   init: function() {
-
-  this.createBackground();
-  this.createTitlename();
-  this.createSlideBg();
-   this.createPlayButton();
-    this.createHowToButton();
+    this.createBackground();
+    this.createTitlename();
+    this.createSlideBg();
+    this.createPlayButton();
+    this.createHelpButton();
     this.createCreditButton();
-  return true;
-},
+    cc.audioEngine.playMusic( res.ThemeSongMenu_mp3 , true );
+    return true;
+  },
+
   createBackground : function() {
     this.menuBg = new MenuBg();
     this.menuBg.setPosition( new cc.Point( screenWidth/2 , screenHeight/2  ) );
@@ -22,49 +32,52 @@ var MainMenu = cc.LayerColor.extend({
   },
 
   createSlideBg: function() {
-  this.slideBg = new SlideBg();
-  this.slideBg.setPosition( new cc.Point( 900, 100 ) );
-  this.addChild( this.slideBg , 1 );
-  this.slideBg.scheduleUpdate();
+    this.slideBg = new SlideBg();
+    this.slideBg.setPosition( new cc.Point( 900, 100 ) );
+    this.addChild( this.slideBg , 1 );
+    this.slideBg.scheduleUpdate();
   },
 
   createPlayButton:function(){
-    this.playButItem = new cc.MenuItemImage(
+    this.playButtonItem = new cc.MenuItemImage(
       res.playButton_png,
       res.playButtonAnimation_png,
       function () {
+        cc.audioEngine.stopMusic( res.ThemeSongMenu_mp3);
         cc.audioEngine.playEffect( res.click_mp3 );
-        cc.director.runScene(new GamePlayScene() );
+        cc.director.runScene(new StartScene() );
       }, this);
-    this.playButton = new cc.Menu(this.playButItem);
-    this.addChild(this.playButton);
+    this.playButton = new cc.Menu(this.playButtonItem);
     this.playButton.setPosition(screenWidth/2,(screenHeight/2)+100);
+    this.addChild(this.playButton);
   },
-  createHowToButton:function(){
-    this.howToButItem = new cc.MenuItemImage(
+
+  createHelpButton:function(){
+    this.helpButtonItem = new cc.MenuItemImage(
       res.helpButton_png,
       res.helpButtonAnimation_png,
       function () {
-        cc.audioEngine.playEffect( res.press_mp3 );
-        cc.director.runScene( new HowToScene() );
+        cc.audioEngine.playEffect( res.click_mp3 );
+        cc.director.runScene( new HelpScene() );
       }, this);
-    this.howToButton = new cc.Menu(this.howToButItem);
-    this.addChild(this.howToButton);
-    this.howToButton.setPosition(screenWidth/2,(screenHeight/2));
+    this.helpButton = new cc.Menu(this.helpButtonItem);
+    this.helpButton.setPosition(screenWidth/2,(screenHeight/2));
+    this.addChild(this.helpButton);
   },
+
   createCreditButton:function(){
-    this.creditButItem = new cc.MenuItemImage(
+    this.creditButtonItem = new cc.MenuItemImage(
       res.creditButton_png,
       res.creditButtonAnimation_png,
       function () {
-        cc.audioEngine.playEffect( res.press_mp3 );
+        cc.audioEngine.playEffect( res.click_mp3 );
         cc.director.runScene( new CreditScene() );
       }, this);
-    this.creditButton = new cc.Menu(this.creditButItem);
-    this.addChild(this.creditButton);
-    var deltaDistance = -100;
-    this.creditButton.setPosition(screenWidth/2,(screenHeight/2)+deltaDistance);
-  },
+    this.creditButton = new cc.Menu(this.creditButtonItem);
+    this.creditButton.setPosition(screenWidth/2,(screenHeight/2)-100);
+    this.addChild(this.creditButton);  
+  }
+
 });
 
 var StartSceneMenu = cc.Scene.extend({
@@ -76,12 +89,3 @@ var StartSceneMenu = cc.Scene.extend({
   }
 });
 
-var GamePlayScene = cc.Scene.extend({
- onEnter: function() {
-  this._super();
-  var layer = new GameLayer();
-  layer.init();
-  this.addChild( layer );
-}
-});
-var isPlayingSong = false;

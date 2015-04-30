@@ -17,13 +17,13 @@ var hammerBlue = cc.Sprite.extend({
 
   changeHammer:function(){
     if (this.combo>=5) {
-       this.initWithFile( res.hummerBlueCombo2_png );
+       this.initWithFile( res.hammerBlueCombo2_png );
     }
     else if (this.combo>=3) {
-       this.initWithFile( res.hummerBlueCombo1_png );
+       this.initWithFile( res.hammerBlueCombo1_png );
     }
     else{
-       this.initWithFile( res.hummerBlue_png );
+       this.initWithFile( res.hammerBlue_png );
      }
     this.setAnchorPoint(0.5,0);
     this.setPosition(this.x,200);
@@ -60,8 +60,8 @@ var hammerBlue = cc.Sprite.extend({
     this.isHit = false;
   },
 
-  setHammer:function(ham){
-    this.hammerRed= ham;
+  setHammer:function( ham ){
+    this.hammerRed = ham ;
   },
 
   collsion:function(){

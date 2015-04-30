@@ -18,13 +18,13 @@ var hammerRed = cc.Sprite.extend({
 
   changeHammer:function(){
     if (this.combo>=5) {
-       this.initWithFile( res.hummerRedCombo2_png );
+       this.initWithFile( res.hammerRedCombo2_png );
     }
     else if (this.combo>=3) {
-       this.initWithFile( res.hummerRedCombo1_png );
+       this.initWithFile( res.hammerRedCombo1_png );
     }
     else{
-       this.initWithFile( res.hummerRed_png );
+       this.initWithFile( res.hammerRed_png );
      }
      this.setAnchorPoint(0.5,0);
      this.setPosition(this.x,200);

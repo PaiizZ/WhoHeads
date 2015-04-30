@@ -16,22 +16,19 @@ var CreditLayer = cc.LayerColor.extend({
         return true;
 
     },
-
     createBackButton:function(){
     	this.backButtonItem = new cc.MenuItemImage(
     		res.backButton_png,
-    		res.animationDown_png,
+    		res.backButtonAnimation_png,
     		function () {
                 cc.audioEngine.playEffect( res.click_mp3 );
     			cc.director.runScene(new StartSceneMenu() );
     		}, this);
     	this.backButton = new cc.Menu(this.backButtonItem);
+        this.backButton.setPosition(screenWidth-80,screenHeight-550);
     	this.addChild(this.backButton);
-      	this.backButton.setPosition(screenWidth-100,screenHeight-550);
     }
-
 });
-
 
 var CreditScene = cc.Scene.extend({
     onEnter: function() {
