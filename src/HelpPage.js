@@ -3,15 +3,13 @@ var HelpPage = cc.Sprite.extend({
     ctor: function() {
         this._super();
         this.initWithFile( res.HelpBg_png );
-        this.setPosition(screenWidth/2,screenHeight/2);
     },
 
 });
 
 var HelpLayer = cc.LayerColor.extend({
     init: function() {
-        this.helpPage = new HelpPage()
-        this.addChild(this.helpPage);
+        this.createHelpPage();
         this.createBackButton();
         this.createHammerRedHelp();
         this.createHammerBlueHelp();
@@ -19,6 +17,12 @@ var HelpLayer = cc.LayerColor.extend({
         this.createBluePress();
         return true;
 
+    },
+
+    createHelpPage:function(){
+        this.helpPage = new HelpPage()
+        this.helpPage.setPosition(screenWidth/2,screenHeight/2);
+        this.addChild(this.helpPage);
     },
 
     createHammerRedHelp:function(){

@@ -10,6 +10,9 @@ var res = {
 	blueDown_png : "res/images/blueDown.png",
 	redDown_png : "res/images/redDown.png",
 	animationDown_png : "res/images/animationDown.png",
+	blueWin_png : "res/images/blueWin.png",
+	redWin_png : "res/images/redWin.png",
+	dule_png : "res/images/dule.png",
 
 	//button
 	creditButton_png : "res/images/creditButton.png",
