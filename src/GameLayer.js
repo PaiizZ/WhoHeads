@@ -16,7 +16,7 @@ var GameLayer = cc.LayerColor.extend({
     this.scheduleUpdate();
     this.sec = 0 ;
     this.secBorn = 0 ;
-    this.gameTime = 20 ;
+    this.gameTime = 120 ;
     this.hammerRedPress = false;
     this.hammerBluePress = false;
     this.numRandom = Math.floor( Math.random()*3 ) + 1;

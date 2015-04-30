@@ -1,5 +1,18 @@
 var res = {
+	//Bg
 	Bg_png : "res/images/Bg.png",
+	MenuBg_png : "res/images/MenuBg.png",
+	HeadsBg_png : "res/images/whoHeadsBg.png",
+	HeadsBgAnimation_png : "res/images/whoHeadsBgAnimation.png",
+	slideBg_png : "res/images/slideBg.png",
+	creditButton_png : "res/images/creditButton.png",
+	creditButtonAnimation_png : "res/images/creditButtonAnimation.png",
+	helpButton_png : "res/images/helpButton.png",
+	helpButtonAnimation_png : "res/images/helpButtonAnimation.png",
+	playButton_png : "res/images/playButton.png",
+	playButtonAnimation_png : "res/images/playButtonAnimation.png",
+
+	//who picture
 	whoGun_png : "res/images/whoGun.png",
 	whoPeak_png : "res/images/whoPeak.png",
 	whoOat_png : "res/images/whoOat.png",
@@ -20,6 +33,7 @@ var res = {
 	whoNumtan_png : "res/images/whoNumtan.png",
 	whoPlammy_png : "res/images/whoPlammy.png",
 	whoPrang_png : "res/images/whoPrang.png",
+	//hammer
 	effect_png : "res/images/hit.png",
 	hummerBlue_png : "res/images/hammerBlue.png",
 	hummerBlueCombo1_png : "res/images/hammerBlueCombo1.png",
@@ -27,9 +41,13 @@ var res = {
 	hummerRed_png : "res/images/hammerRed.png",
 	hummerRedCombo1_png : "res/images/hammerRedCombo1.png",
 	hummerRedCombo2_png : "res/images/hammerRedCombo2.png",
+	//sounds
 	ThemeSong_mp3 : "res/musics/ThemeSong.mp3",
+	ThemeSongMenu_mp3 : "res/musics/ThemeSongMenu.mp3",
+	click_mp3 : "res/musics/click.mp3",
 	yellBoy_wav : "res/musics/yellBoy.wav",
 	yellGirl_wav : "res/musics/yellGirl.wav",
+
 
 };
 

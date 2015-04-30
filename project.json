@@ -14,10 +14,14 @@
     "src/resource.js",
     "src/GameLayer.js",
     "src/Bg.js",
+    "src/MenuBg.js",
+    "src/MainMenu.js",
     "src/Person.js",
     "src/Effect.js",
     "src/hammerBlue.js",
-    "src/hammerRed.js"
+    "src/hammerRed.js",
+    "src/TitleName.js",
+    "src/SlideBg.js"
 
     ]
 }

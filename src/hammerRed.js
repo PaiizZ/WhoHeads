@@ -42,7 +42,15 @@ var hammerRed = cc.Sprite.extend({
       }
       this.isHit = false;
       this.person.direction = Person.DIR.Hit ;
-      scorePlayer2 += score ; 
+      if (this.combo>=5) {
+        scorePlayer2 += score+3 ;
+      }
+      else if (this.combo>=3) {
+        scorePlayer2 += score+1 ;
+      }
+      else{
+        scorePlayer2 += score ;
+      }  
       this.hammerBlue.combo = 0 ;
       if ( scorePlayer2 < 0 ) {
         scorePlayer2 = 0 ;
