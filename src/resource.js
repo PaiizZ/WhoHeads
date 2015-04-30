@@ -1,16 +1,24 @@
 var res = {
 	//Bg
 	Bg_png : "res/images/Bg.png",
+	CreditBg_png : "res/images/CreditBg.png",
+	HelpBg_png : "res/images/HelpBg.png",
 	MenuBg_png : "res/images/MenuBg.png",
 	HeadsBg_png : "res/images/whoHeadsBg.png",
 	HeadsBgAnimation_png : "res/images/whoHeadsBgAnimation.png",
 	slideBg_png : "res/images/slideBg.png",
+	blueDown_png : "res/images/blueDown.png",
+	redDown_png : "res/images/redDown.png",
+	animationDown_png : "res/images/animationDown.png",
+
+	//button
 	creditButton_png : "res/images/creditButton.png",
 	creditButtonAnimation_png : "res/images/creditButtonAnimation.png",
 	helpButton_png : "res/images/helpButton.png",
 	helpButtonAnimation_png : "res/images/helpButtonAnimation.png",
 	playButton_png : "res/images/playButton.png",
 	playButtonAnimation_png : "res/images/playButtonAnimation.png",
+	backButton_png : "res/images/backButton.png",
 
 	//who picture
 	whoGun_png : "res/images/whoGun.png",
