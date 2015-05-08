@@ -6,7 +6,7 @@ var Effect = cc.Sprite.extend({
     },
     update:function(dt){
     	this.count+=dt;
-    	if(this.count>0.2){
+    	if( this.count > 0.2 ){
     		this.removeFromParent();
     	}
     }

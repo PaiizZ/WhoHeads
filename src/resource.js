@@ -47,6 +47,7 @@ var res = {
 	whoNumtan_png : "res/images/whoNumtan.png",
 	whoPlammy_png : "res/images/whoPlammy.png",
 	whoPrang_png : "res/images/whoPrang.png",
+
 	//hammer
 	effect_png : "res/images/hit.png",
 	hammerBlue_png : "res/images/hammerBlue.png",
@@ -59,6 +60,16 @@ var res = {
 	hamRedAnimation_png : "res/images/hamRedAnimation.png",
 	hamBlue_png : "res/images/hamBlue.png",
 	hamBlueAnimation_png : "res/images/hamBlueAnimation.png",
+
+	//combo
+	twoComboBlue_png : "res/images/2comboBlue.png",
+	threeComboBlue_png : "res/images/3comboBlue.png",
+	fourComboBlue_png : "res/images/4comboBlue.png",
+	goodComboBlue_png : "res/images/goodComboBlue.png",
+	twoComboRed_png : "res/images/2comboRed.png",
+	threeComboRed_png : "res/images/3comboRed.png",
+	fourComboRed_png : "res/images/4comboRed.png",
+	goodComboRed_png : "res/images/goodComboRed.png",
 
 	//sounds
 	ThemeSong_mp3 : "res/musics/ThemeSong.mp3",

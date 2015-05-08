@@ -7,7 +7,7 @@ var Person = cc.Sprite.extend({
 	},
 
 	update: function( dt ) {
-		
+	
 		if (this.direction != Person.DIR.Hit) {
 			if ( this.sec == 1){
 				this.setPositionY( this.getPositionY() - 15 );
@@ -34,13 +34,16 @@ var Person = cc.Sprite.extend({
 
 	randomPerson: function(){
         this.setPositionY( 0 );
+        
         var picture = [ res.whoGun_png ,res.whoPeak_png ,res.whoOat_png ,res.whoBoss_png ,res.whoBosss_png ,res.whoKanun_png ,res.whoNet_png ,res.whoNot_png ,res.whoNut_png ,res.whoPee_png ,res.whoSafe_png ,res.whoThird_png ,res.whoTrong_png ,res.whoEarng_png ,res.whoMakam_png ,res.whoMild_png ,res.whoNuch_png ,res.whoNumtan_png ,res.whoPlammy_png ,res.whoPrang_png ] 
 		this.numPicture = Math.floor( Math.random()*19 );
 			this.initWithFile( picture[this.numPicture] );
 			if( this.numPicture <= 12){
+				gender = 1 ;
 				score = 2 ;
 			}
 			else{
+				gender = 2 ;
 				score = -2 ;
 			}
 		this.sec = 0 ;
@@ -52,3 +55,5 @@ Person.DIR = {
 	DontHit : 0 ,
 	Hit: 1
 };
+
+var gender = 0 ;

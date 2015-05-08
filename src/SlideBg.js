@@ -5,7 +5,6 @@ var SlideBg = cc.Sprite.extend({
   },
 
   update: function( dt ) {
-
     this.setPositionX( this.getPositionX() - 4 );
     if(this.getPositionX()<= -300) {
       this.setPosition( new cc.Point( 1200, 100 ) );

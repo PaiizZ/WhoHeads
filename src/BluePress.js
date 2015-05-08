@@ -1,9 +1,9 @@
 var BluePress = cc.Sprite.extend({
   ctor: function() {
     this._super();
-    this.initWithFile( res.animationDown_png);
+    this.initWithFile( res.animationDown_png );
     this.movingAction = this.bluePressAnimation();
-    this.runAction(this.movingAction);
+    this.runAction( this.movingAction );
   },
 
   bluePressAnimation:function(){

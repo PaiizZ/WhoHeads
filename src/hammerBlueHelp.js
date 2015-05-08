@@ -1,9 +1,9 @@
 var hammerBlueHelp = cc.Sprite.extend({
   ctor: function() {
     this._super();
-    this.initWithFile( res.hamBlue_png);
+    this.initWithFile( res.hamBlue_png );
     this.movingAction = this.hammerBlueAnimation();
-    this.runAction(this.movingAction);
+    this.runAction( this.movingAction );
   },
 
   hammerBlueAnimation:function(){
